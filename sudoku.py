@@ -92,10 +92,14 @@ def read_sudoku_file(filename: str) -> list[str]:
 
 board = SudokuBoard(read_sudoku_file('sudoku.csv'))
 
-print(board)
-print()
-print()
-print()
+boardLines = str(board).split('\n')
 
 board.solve()
-print(board)
+solvedLines = str(board).split('\n')
+
+gap = '  '
+
+print(f'{{0:<{len(boardLines[0])}s}}{gap}Solved:'.format('Original:'))
+
+for original, solved in zip(boardLines, solvedLines):
+    print(f'{original}{gap}{solved}')
